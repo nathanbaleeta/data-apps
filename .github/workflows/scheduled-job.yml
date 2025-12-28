@@ -7,11 +7,15 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest # Specify the runner environment
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Run a scheduled script
+        uses: actions/checkout@v4 # Checkout your repository code
+      - name: Set up Python
+        uses: actions/setup-python@v5 # Set up a Python environment
+        with:
+          python-version: '3.x' # Specify your desired Python version
+      - name: Run a scheduled Python script
         run: |
           echo "This script runs daily at noon UTC"
-          # Add your custom commands here
+          python test_script.py # Execute your Python script
