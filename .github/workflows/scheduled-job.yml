@@ -3,7 +3,8 @@ name: Scheduled Daily Build
 on:
   schedule:
     # Run every day at 12:00 PM UTC
-    - cron: '0 12 * * *'
+    - cron: '*/5 * * * *'
+    #- cron: '0 12 * * *'
 
 jobs:
   build:
@@ -12,10 +13,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4 # Checkout your repository code
       - name: Set up Python
-        uses: actions/setup-python@v5 # Set up a Python environment
+        uses: actions/setup-python@v5 # Set up a Python environment using recent version
         with:
-          python-version: '3.x' # Specify your desired Python version
+          python-version: '3.10+' # Specify your desired Python version
       - name: Run a scheduled Python script
+        working-directory: ./scripts # Set the working directory
         run: |
-          echo "This script runs daily at noon UTC"
           python test_script.py # Execute your Python script
