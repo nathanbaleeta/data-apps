@@ -15,7 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5 # Set up a Python environment using recent version
         with:
-          python-version: '3.10' # Specify your desired Python version
+          python-version: '3.x' # Specify your desired Python version
       - name: Run a scheduled Python script
         working-directory: ./scripts # Set the working directory
         run: |
