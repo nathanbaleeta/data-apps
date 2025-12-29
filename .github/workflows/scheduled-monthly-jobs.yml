@@ -1,4 +1,4 @@
-name: Scheduled Daily Build
+name: Scheduled Monthly Build
 
 on:
   schedule:
@@ -21,7 +21,7 @@ jobs:
           cache: 'pip'  # Optional: Caches dependencies for faster subsequent runs
       - name: Install dependencies
         run: |
-          python -m pip install pandas requests beautifulsoup4
+          python -m pip install -r requirements.txt
       - name: Run Python pipelines
         working-directory: ./pipelines # Set the working directory
         run: |
