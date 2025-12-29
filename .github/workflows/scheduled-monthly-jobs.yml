@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-python@v5 # Set up a Python environment using recent version
         with:
           python-version: '3.x' # Specify your desired Python version
-      - name: Run a scheduled Python script
-        working-directory: ./scripts # Set the working directory
+      - name: Run a scheduled Python pipeline
+        working-directory: ./pipelines # Set the working directory
         run: |
-          python test_script.py # Execute your Python script
+          python population_by_country_monthly_etl.py # Execute your Python script
