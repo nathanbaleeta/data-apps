@@ -21,4 +21,4 @@ jobs:
       - name: Run a scheduled Python pipeline
         working-directory: ./pipelines # Set the working directory
         run: |
-          python population_by_country_monthly_etl.py # Execute your Python script
+          python population_by_country_monthly_etl.py 
