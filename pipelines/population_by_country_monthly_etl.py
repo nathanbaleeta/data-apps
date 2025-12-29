@@ -23,7 +23,7 @@ from bs4 import BeautifulSoup
 POPULATION_URL = "https://www.worldometers.info/world-population/population-by-country/"
 
 
-def extract():
+def extract() -> pd.DataFrame:
     response = requests.get(POPULATION_URL)
     soup = BeautifulSoup(response.content, 'html.parser')
 
@@ -49,7 +49,7 @@ def extract():
                                       'fertility_rate', 'urban_population_pct'
                                       ])
     
-    return len(df)
+    return df
 
 
 
