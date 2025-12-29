@@ -4,9 +4,9 @@ on:
   schedule:
     # Run every day at 12:00 PM UTC
     # Reference: https://crontab.guru/
-    # - cron: '*/5 * * * *'
+     - cron: '*/5 * * * *'
     #- cron: '0 12 * * *'
-    - cron: '0 0 1 * *'
+    #- cron: '0 0 1 * *'
 
 jobs:
   build:
@@ -18,7 +18,12 @@ jobs:
         uses: actions/setup-python@v5 # Set up a Python environment using recent version
         with:
           python-version: '3.x' # Specify your desired Python version
-      - name: Run a scheduled Python pipeline
+          cache: 'pip'  # Optional: Caches dependencies for faster subsequent runs
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt
+      - name: Run Python pipelines
         working-directory: ./pipelines # Set the working directory
         run: |
           python population_by_country_monthly_etl.py 
